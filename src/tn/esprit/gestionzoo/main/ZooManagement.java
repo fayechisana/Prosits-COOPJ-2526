@@ -1,3 +1,5 @@
+package tn.esprit.gestionzoo.main;
+
 import java.util.Scanner;
 
 public class ZooManagement {
@@ -32,20 +34,20 @@ public class ZooManagement {
         myZoo.city = "Tunis";
        // myZoo.nbrCages = 20;
 
-       // System.out.println("Zoo : " + myZoo.name + " à " + myZoo.city);
-        System.out.println("Animal : " + lion.name + " (" + lion.family + ")");
+       // System.out.println("tn.esprit.gestionzoo.entities.Zoo : " + myZoo.name + " à " + myZoo.city);
+        System.out.println("tn.esprit.gestionzoo.entities.Animal : " + lion.name + " (" + lion.family + ")");
 
         Animal lion1 = new Animal("Félidé", "Lion", 5, true);
-       // Zoo myZoo1 = new Zoo("Parc Animalier", "Tunis", 20);
+       // tn.esprit.gestionzoo.entities.Zoo myZoo1 = new tn.esprit.gestionzoo.entities.Zoo("Parc Animalier", "Tunis", 20);
 
-        System.out.println("Animal créé : " + lion1.name);
-        //System.out.println("Zoo créé : " + myZoo1.name + " (" + myZoo.city + ")");
+        System.out.println("tn.esprit.gestionzoo.entities.Animal créé : " + lion1.name);
+        //System.out.println("tn.esprit.gestionzoo.entities.Zoo créé : " + myZoo1.name + " (" + myZoo.city + ")");
 
         myZoo.displayZoo();
         System.out.println(myZoo);
         //Prosit 3
-        Zoo zoo1 = new Zoo("Zoo Esprit", "Tunis");
-        Zoo zoo2 = new Zoo("Zoo Safari", "Sousse");
+        Zoo zoo1 = new Zoo("tn.esprit.gestionzoo.entities.Zoo Esprit", "Tunis");
+        Zoo zoo2 = new Zoo("tn.esprit.gestionzoo.entities.Zoo Safari", "Sousse");
 
         Animal tigre = new Animal("Félidé", "Shere Khan", 7, true);
         Animal lion2 = new Animal("Félidé", "Lion", 5, true); // identique à lion
@@ -65,15 +67,15 @@ public class ZooManagement {
         zoo1.removeAnimal(tigre);
         zoo1.displayAnimals();
 
-        // Test Zoo plein
+        // Test tn.esprit.gestionzoo.entities.Zoo plein
         for (int i = 0; i < 30; i++) {
-            zoo1.addAnimal(new Animal("TestFamily", "Animal" + i, 2, false));
+            zoo1.addAnimal(new Animal("TestFamily", "tn.esprit.gestionzoo.entities.Animal" + i, 2, false));
         }
-        System.out.println("Zoo plein " + zoo1.isZooFull());
+        System.out.println("tn.esprit.gestionzoo.entities.Zoo plein " + zoo1.isZooFull());
 
         // Test Comparaison
         zoo2.addAnimal(new Animal("Canidés", "Wolf", 4, true));
         Zoo plusGrand = Zoo.comparerZoo(zoo1, zoo2);
-        System.out.println("Zoo avec le plus d'animaux : " + plusGrand);
+        System.out.println("tn.esprit.gestionzoo.entities.Zoo avec le plus d'animaux : " + plusGrand);
     }
 }

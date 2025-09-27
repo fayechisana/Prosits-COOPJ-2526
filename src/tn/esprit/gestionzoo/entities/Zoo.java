@@ -1,7 +1,9 @@
+package tn.esprit.gestionzoo.entities;
+
 public class Zoo {
      final int NBR_CAGES = 25;   // constante
      Animal[] animals;
-     String name;
+     private String name;
      String city;
      int animalCount; // compteur d’animaux
     public Zoo(){}
@@ -12,11 +14,11 @@ public class Zoo {
         this.animals = new Animal[NBR_CAGES];
     }
     public void displayZoo() {
-        System.out.println("Zoo : " + name + ", Ville : " + city + ", Cages : " + NBR_CAGES);
+        System.out.println("tn.esprit.gestionzoo.entities.Zoo : " + name + ", Ville : " + city + ", Cages : " + NBR_CAGES);
     }
     @Override
     public String toString() {
-        return "Zoo [Nom=" + name + ", Ville=" + city + ", Cages=" + NBR_CAGES + "]";
+        return "tn.esprit.gestionzoo.entities.Zoo [Nom=" + name + ", Ville=" + city + ", Cages=" + NBR_CAGES + "]";
     }
     // ✅ Instruction 10 : Ajouter un animal
     public boolean addAnimal(Animal animal) {
@@ -54,7 +56,7 @@ public class Zoo {
     public boolean removeAnimal(Animal animal) {
         int index = searchAnimal(animal);
         if (index == -1) {
-            System.out.println("Animal introuvable");
+            System.out.println("tn.esprit.gestionzoo.entities.Animal introuvable");
             return false;
         }
         for (int i = index; i < animalCount - 1; i++) {
@@ -78,4 +80,15 @@ public class Zoo {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if(name != null ) {
+            this.name = name;
+        } else {
+            System.out.println("Erreur : le nom du zoo ne peut pas être vide.");
+        }
+    }
 }
