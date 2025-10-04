@@ -56,7 +56,7 @@ public class Zoo {
     public boolean removeAnimal(Animal animal) {
         int index = searchAnimal(animal);
         if (index == -1) {
-            System.out.println("tn.esprit.gestionzoo.entities.Animal introuvable");
+            System.out.println("Animal introuvable");
             return false;
         }
         for (int i = index; i < animalCount - 1; i++) {
