@@ -13,6 +13,8 @@ public class Dolphin extends Aquatic {
         this.swimmingSpeed = swimmingSpeed;
     }
 
+
+
     @Override
     public String toString() {
         return super.toString() + ", Swimming Speed: " + swimmingSpeed + " km/h";

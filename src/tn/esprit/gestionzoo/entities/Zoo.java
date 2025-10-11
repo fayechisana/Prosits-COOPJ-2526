@@ -5,7 +5,9 @@ public class Zoo {
      Animal[] animals;
      private String name;
      String city;
-     int animalCount; // compteur d’animaux
+     int animalCount;// compteur d’animaux
+    private Aquatic[] aquaticAnimals = new Aquatic[10];
+    private int count; // nombre d'animaux ajoutés
     public Zoo(){}
     // Constructeur paramétré
     public Zoo(String name, String city) {
@@ -91,4 +93,42 @@ public class Zoo {
             System.out.println("Erreur : le nom du zoo ne peut pas être vide.");
         }
     }
+    // Instruction 25 : Ajouter un animal aquatique
+    public void addAquaticAnimal(Aquatic aquatic) {
+        if (count < aquaticAnimals.length) {
+            aquaticAnimals[count++] = aquatic;
+        } else {
+            System.out.println("Zoo is full! Cannot add more aquatic animals.");
+        }
+    }
+    // Instruction 26 : Appeler swim() pour tous les animaux aquatiques
+    public void swimAll() {
+        for (int i = 0; i < count; i++) {
+            aquaticAnimals[i].swim();
+        }
+    }
+    // Instruction 27 : Profondeur maximale des pingouins
+    public float maxPenguinSwimmingDepth() {
+        float maxDepth = 0;
+        for (int i = 0; i < count; i++) {
+            if (aquaticAnimals[i] instanceof Penguin) {
+                Penguin p = (Penguin) aquaticAnimals[i];
+                if (p.getSwimmingDepth() > maxDepth) {
+                    maxDepth = p.getSwimmingDepth();
+                }
+            }
+        }
+        return maxDepth;
+    }
+    // Instruction 28 : Affichage du nombre par type
+    public void displayNumberOfAquaticsByType() {
+        int dolphins = 0, penguins = 0;
+        for (int i = 0; i < count; i++) {
+            if (aquaticAnimals[i] instanceof Dolphin) dolphins++;
+            if (aquaticAnimals[i] instanceof Penguin) penguins++;
+        }
+        System.out.println("Number of Dolphins: " + dolphins);
+        System.out.println("Number of Penguins: " + penguins);
+    }
+
 }

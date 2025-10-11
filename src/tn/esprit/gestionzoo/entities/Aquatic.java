@@ -1,6 +1,6 @@
 package tn.esprit.gestionzoo.entities;
 
-public class Aquatic extends Animal {
+public abstract  class Aquatic extends Animal {
     protected String habitat;
 
     // Constructeur par défaut
@@ -18,7 +18,13 @@ public class Aquatic extends Animal {
         return super.toString() + ", Habitat: " + habitat;
     }
 
-    public void swim() {
-        System.out.println("This aquatic animal is swimming.");
+    // Méthode abstraite : doit être redéfinie dans les sous-classes
+    public abstract void swim();
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Aquatic)) return false;
+        Aquatic a = (Aquatic) o;
+        return this.name.equals(a.name) && this.age == a.age && this.habitat.equals(a.habitat);
     }
 }
