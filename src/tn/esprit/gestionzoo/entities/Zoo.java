@@ -1,5 +1,8 @@
 package tn.esprit.gestionzoo.entities;
 
+import tn.esprit.gestionzoo.exceptions.InvalidAgeException;
+import tn.esprit.gestionzoo.exceptions.ZooFullException;
+
 public class Zoo {
      final int NBR_CAGES = 25;   // constante
      Animal[] animals;
@@ -23,19 +26,36 @@ public class Zoo {
         return "tn.esprit.gestionzoo.entities.Zoo [Nom=" + name + ", Ville=" + city + ", Cages=" + NBR_CAGES + "]";
     }
     // ✅ Instruction 10 : Ajouter un animal
-    public boolean addAnimal(Animal animal) {
-        if (animalCount >= NBR_CAGES) {
-            System.out.println("Le zoo est plein, impossible d'ajouter l'animal");
-            return false;
+//    public boolean addAnimal(Animal animal) {
+//        if (animalCount >= NBR_CAGES) {
+//            System.out.println("Le zoo est plein, impossible d'ajouter l'animal");
+//            return false;
+//        }
+//        // Vérifie l’unicité
+//        if (searchAnimal(animal) != -1) {
+//            System.out.println("Cet animal existe déjà");
+//            return false;
+//        }
+//        animals[animalCount] = animal;
+//        animalCount++;
+//        return true;
+//    }
+    // ✅ Méthode modifiée : ne retourne plus boolean, mais void
+    public void addAnimal(Animal animal) throws ZooFullException, InvalidAgeException {
+        // Vérification de l’âge
+        if (animal.getAge() < 0) {
+            throw new InvalidAgeException("Âge d’animal invalide : l’âge ne peut pas être négatif.");
         }
-        // Vérifie l’unicité
-        if (searchAnimal(animal) != -1) {
-            System.out.println("Cet animal existe déjà");
-            return false;
+
+        // Vérification de la capacité du zoo
+        if (animals.length >= NBR_CAGES) {
+            throw new ZooFullException("Le zoo est plein, impossible d’ajouter un nouvel animal.");
         }
+
+        // Si tout va bien, on ajoute l’animal
         animals[animalCount] = animal;
         animalCount++;
-        return true;
+        System.out.println(animal.getName() + " a été ajouté au zoo !");
     }
     // ✅ Instruction 11 : Afficher les animaux
     public void displayAnimals() {
@@ -131,4 +151,27 @@ public class Zoo {
         System.out.println("Number of Penguins: " + penguins);
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getAnimalCount() {
+        return animalCount;
+    }
+
+    public void setAnimalCount(int animalCount) {
+        this.animalCount = animalCount;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 }

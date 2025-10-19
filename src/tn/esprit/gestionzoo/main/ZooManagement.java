@@ -1,6 +1,8 @@
 package tn.esprit.gestionzoo.main;
 
 import tn.esprit.gestionzoo.entities.*;
+import tn.esprit.gestionzoo.exceptions.InvalidAgeException;
+import tn.esprit.gestionzoo.exceptions.ZooFullException;
 
 import java.util.Scanner;
 
@@ -125,5 +127,35 @@ public class ZooManagement {
         // Vérifier equals
         Dolphin dolphin2 = new Dolphin("Flipper","Ocean",5,true,"Sea",30);
         System.out.println("d1 equals dolphin2? " + d1.equals(dolphin2));
+
+        System.out.println("----------------Prosit 7");
+        //  1. Animal valide
+        try {
+            myZoo.addAnimal(new Animal("Lion", 5));
+        } catch (ZooFullException | InvalidAgeException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+        System.out.println("Nombre total d’animaux : " + myZoo.getAnimalCount());
+        System.out.println();
+
+        //  2. Animal avec âge négatif
+        try {
+            myZoo.addAnimal(new Animal("Serpent", -2));
+        } catch (ZooFullException | InvalidAgeException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+        System.out.println("Nombre total d’animaux : " + myZoo.getAnimalCount());
+        System.out.println();
+
+        //  3. Ajouts jusqu’à dépassement de capacité
+        try {
+            myZoo.addAnimal(new Animal("Tigre", 3));
+            myZoo.addAnimal(new Animal("Girafe", 7));
+            myZoo.addAnimal(new Animal("Zèbre", 4)); // Dépassement ici
+        } catch (ZooFullException | InvalidAgeException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+        System.out.println("Nombre total d’animaux : " + myZoo.getAnimalCount());
+        myZoo.displayAnimals();
     }
 }

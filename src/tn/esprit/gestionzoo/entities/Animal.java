@@ -10,6 +10,11 @@ public class Animal {
     public Animal() {
     }
 
+    public Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
     // Constructeur paramétré
     public Animal(String family, String name, int age, boolean isMammal) {
         this.family = family;
@@ -18,8 +23,18 @@ public class Animal {
         this.isMammal = isMammal;
     }
 
+
+
     @Override
     public String toString() {
         return "Family: " + family + ", Name: " + name + ", Age: " + age + ", Mammal: " + isMammal;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
     }
 }
