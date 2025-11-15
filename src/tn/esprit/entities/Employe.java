@@ -19,6 +19,11 @@ public class Employe implements Comparable<Employe> {
         this.grade = grade;
     }
 
+    public Employe(int id,String prenom) {
+        this.id = id;
+        this.prenom=prenom;
+    }
+
     // Getters et Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
